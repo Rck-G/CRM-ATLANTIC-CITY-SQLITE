@@ -1,0 +1,47 @@
+CRM ATLANTIC CITY — SQLITE EDITION
+=================================
+
+REQUISITOS
+- Windows 10/11 (o macOS/Linux).
+- Node.js 22.13 o superior y npm.
+- No se necesita SQL Server ni SSMS.
+
+INSTALACIÓN EN WINDOWS
+1. Descomprima el ZIP en una carpeta local.
+2. Ejecute instalar.bat. El instalador genera backend/.env con secretos aleatorios e instala las dependencias.
+3. Ejecute iniciar.bat.
+4. Abra http://localhost:3000.
+5. En la pantalla inicial, configure el primer administrador con una contraseña segura de al menos 12 caracteres.
+
+BASE DE DATOS
+La base SQLite se crea automáticamente en database/atlantic_crm.db al iniciar el backend por primera vez. No ejecute scripts SQL manualmente. El esquema se encuentra en backend/database/sqlite-schema.sql.
+La ubicación del archivo se puede cambiar en backend/.env mediante SQLITE_FILE.
+
+DATOS DE DEMOSTRACIÓN (OPCIONAL)
+Solo para desarrollo. En PowerShell:
+  $env:SEED_DEMO_DATA="true"; npm run seed:demo
+En CMD:
+  set SEED_DEMO_DATA=true && npm run seed:demo
+
+Cuentas demo:
+- admin@demo.atlantic.local / DemoAdmin#2026
+- manager@demo.atlantic.local / DemoManager#2026
+- marketing@demo.atlantic.local / DemoMarketing#2026
+- lucia.ramirez@demo.atlantic.local / DemoCliente#101
+- mateo.fernandez@demo.atlantic.local / DemoCliente#102
+- valentina.torres@demo.atlantic.local / DemoCliente#103
+
+FIDELIZACIÓN
+- Silver: desde 0 puntos.
+- Gold: desde 500 puntos.
+- Platinum: desde 1.500 puntos.
+Los umbrales y reglas se pueden administrar desde el CRM. Los niveles se asignan automáticamente según los puntos o manualmente por un administrador.
+
+RESPALDOS
+Detenga el CRM antes de copiar manualmente database/atlantic_crm.db. No elimine este archivo: contiene los datos del sistema. Guarde copias periódicas fuera del equipo donde se ejecuta el CRM.
+
+DIAGNÓSTICO
+Abra http://localhost:3000/api/health. Una respuesta correcta contiene ok:true y engine:SQLite.
+
+AYUDA
+Consulte README.md y los documentos de la carpeta docs. Los scripts de SQL Server ubicados en legacy/sqlserver se conservan como referencia histórica y no se utilizan.

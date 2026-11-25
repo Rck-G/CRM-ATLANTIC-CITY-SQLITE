@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b32"><title>Atlantic City | CRM</title>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("ac_theme")||"dark"}catch(e){}</script><link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div id="auth-screen" class="auth-wrap">
+    <button class="icon-btn auth-theme-toggle" id="auth-theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">☀</button>
+    <div class="auth-card">
+      <div class="brand-mark">AC</div><p class="eyebrow">ATLANTIC CITY</p><h1 id="auth-title">Bienvenido al CRM</h1>
+      <p class="muted" id="auth-subtitle">Ingresa para administrar clientes y operaciones.</p>
+      <div id="login-form" class="form-stack">
+        <label>Correo electrónico<input id="login-email" type="email" placeholder="admin@atlantic.local" autocomplete="username"></label>
+        <label>Contraseña<input id="login-password" type="password" placeholder="Tu contraseña" autocomplete="current-password"></label>
+        <button class="btn primary full" id="login-btn">Iniciar sesión</button>
+        <button class="link-btn" id="show-register">Crear cuenta de cliente</button>
+        <button class="link-btn subtle-link" id="show-bootstrap">Configurar primer administrador</button>
+      </div>
+      <div id="register-form" class="form-stack hidden">
+        <div class="two-col"><label>Nombres<input id="reg-first"></label><label>Apellidos<input id="reg-last"></label></div>
+        <label>DNI / Documento<input id="reg-dni"></label><label>Correo<input id="reg-email" type="email"></label><label>Teléfono<input id="reg-phone"></label>
+        <label>Contraseña<input id="reg-password" type="password"></label><label>Confirmar contraseña<input id="reg-confirm" type="password"></label>
+        <label class="checkline"><input id="reg-consent" type="checkbox"> Acepto recibir comunicaciones y promociones</label>
+        <button class="btn primary full" id="register-btn">Crear cuenta</button><button class="link-btn" id="show-login">Volver al inicio de sesión</button>
+      </div>
+      <div id="bootstrap-form" class="form-stack hidden">
+        <label>Nombre del administrador<input id="boot-name" value="Administrador CRM"></label><label>Correo<input id="boot-email" type="email"></label><label>Contraseña (mínimo 12 caracteres)<input id="boot-password" type="password"></label>
+        <button class="btn primary full" id="bootstrap-btn">Crear administrador</button><button class="link-btn" id="back-login">Volver</button>
+      </div>
+      <p id="auth-message" class="message"></p>
+    </div>
+  </div>
+
+  <div id="app-shell" class="shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark small">AC</div><div><strong>ATLANTIC CITY</strong><span>Customer relationship</span></div></div>
+      <div class="nav-caption">MENÚ PRINCIPAL</div><nav id="navigation"></nav>
+      <div class="sidebar-bottom"><button class="user-mini profile-shortcut" id="sidebar-profile" type="button" title="Ver y editar mi perfil"><div class="avatar" id="user-avatar">A</div><div><strong id="user-name">Usuario</strong><span id="user-role">ADMIN</span></div><span class="profile-arrow">›</span></button><button class="btn ghost full" id="logout-btn">Cerrar sesión</button></div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar"><button class="icon-btn mobile-menu" id="menu-toggle">☰</button><div><span class="eyebrow">ATLANTIC CITY · COMMAND CENTER</span><h2 id="page-heading">Resumen general</h2></div><div class="topbar-right"><button class="icon-btn" id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">☾</button><span class="status-dot"></span><span>Conectado</span><button class="avatar top-avatar profile-top-button" id="top-avatar" type="button" aria-label="Ver y editar mi perfil" title="Mi perfil">A</button></div></header>
+      <section id="content" class="content"><div class="loading">Cargando CRM...</div></section>
+      <footer>Atlantic City CRM <span>•</span> Sistema de gestión interna</footer>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="./js/app.js"></script>
+</body></html>
