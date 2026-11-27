@@ -148,4 +148,4 @@ CREATE TABLE IF NOT EXISTS loyalty_tier_history (
 );
 INSERT OR IGNORE INTO loyalty_tier_rules(tier,min_points) VALUES ('SILVER',0),('GOLD',500),('PLATINUM',1500);
 INSERT OR IGNORE INTO loyalty_point_rules(id,rule_key,name,source,points_per_unit,unit_amount,active)
- VALUES('39000000-0000-4000-8000-000000000001','POS_PURCHASE','Compras generales','POS',1,1,1);
+ VALUES('LPR-001','POS_PURCHASE','Compras generales','POS',1,1,1);

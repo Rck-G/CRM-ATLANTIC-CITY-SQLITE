@@ -8,7 +8,7 @@ La aplicación utiliza SQLite mediante el módulo `node:sqlite` incluido en Node
 - Variable de configuración: `SQLITE_FILE`.
 - Definición del esquema: `backend/database/sqlite-schema.sql`.
 - Inicialización: automática al iniciar el backend.
-- Claves primarias: identificadores UUID almacenados como texto.
+- Claves primarias: identificadores de texto cortos y legibles con prefijo por entidad/rol (por ejemplo, `CLI-001`, `ADM-001`, `MAN-001`, `CAM-001`).
 - Relaciones: claves foráneas.
 - Integridad: restricciones `UNIQUE`, `CHECK` e índices definidos en el esquema.
 

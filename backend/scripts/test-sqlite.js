@@ -14,6 +14,11 @@ const db = require('../src/db');
     assert.equal(integrity.recordset[0].integrity_check, 'ok', 'La base debe superar integrity_check');
     const fk = await db.query('PRAGMA foreign_key_check');
     assert.equal(fk.recordset.length, 0, 'No debe haber claves foráneas huérfanas');
+    // Los IDs de prueba de usuarios y clientes deben conservar prefijos legibles por tipo.
+    assert.match('ADM-001', /^ADM-\d{3,}$/);
+    assert.match('MAN-001', /^MAN-\d{3,}$/);
+    assert.match('CLI-001', /^CLI-\d{3,}$/);
+
     const tiers = await db.query('SELECT tier,min_points FROM dbo.loyalty_tier_rules ORDER BY min_points');
     assert.deepEqual(tiers.recordset.map(x=>[x.tier,Number(x.min_points)]),[['SILVER',0],['GOLD',500],['PLATINUM',1500]]);
     await db.query("INSERT dbo.users(id,name,email,password_hash,role,is_active,created_at,updated_at) VALUES(@id,@name,@email,@hash,'ADMIN',1,SYSUTCDATETIME(),SYSUTCDATETIME())",{id:'test-admin',name:'Admin test',email:'admin@test.local',hash:'hash'});
