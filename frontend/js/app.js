@@ -1722,7 +1722,17 @@ $('show-login').onclick = () => showAuth('login');
 $('show-bootstrap').onclick = () => showAuth('bootstrap');
 $('back-login').onclick = () => showAuth('login');
 $('logout-btn').onclick = logout;
-$('menu-toggle').onclick = () => $('sidebar').classList.toggle('open');
+$('menu-toggle').onclick = () => {
+    const sidebar = $('sidebar');
+    const shell = $('app-shell');
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      const isOpen = sidebar.classList.toggle('open');
+      $('menu-toggle').setAttribute('aria-expanded', String(isOpen));
+    } else {
+      const isCollapsed = shell.classList.toggle('sidebar-collapsed');
+      $('menu-toggle').setAttribute('aria-expanded', String(!isCollapsed));
+    }
+  };
 $('top-avatar').onclick = () => navigate('profile');
 $('sidebar-profile').onclick = () => navigate('profile');
 
