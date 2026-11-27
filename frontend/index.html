@@ -2,8 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101b32"><title>Atlantic City | CRM</title>
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem("ac_theme")||"dark"}catch(e){}</script><link rel="stylesheet" href="./css/styles.css">
+  <meta name="theme-color" content="#101b32"><title>Atlantic City | CRM</title><link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
   <div id="auth-screen" class="auth-wrap">
@@ -21,7 +20,7 @@
       <div id="register-form" class="form-stack hidden">
         <div class="two-col"><label>Nombres<input id="reg-first"></label><label>Apellidos<input id="reg-last"></label></div>
         <label>DNI / Documento<input id="reg-dni"></label><label>Correo<input id="reg-email" type="email"></label><label>Teléfono<input id="reg-phone"></label>
-        <label>Contraseña<input id="reg-password" type="password"></label><label>Confirmar contraseña<input id="reg-confirm" type="password"></label>
+        <label>Contraseña<input id="reg-password" type="password" minlength="12" maxlength="200" autocomplete="new-password" required></label><label>Confirmar contraseña<input id="reg-confirm" type="password" minlength="12" maxlength="200" autocomplete="new-password" required></label>
         <label class="checkline"><input id="reg-consent" type="checkbox"> Acepto recibir comunicaciones y promociones</label>
         <button class="btn primary full" id="register-btn">Crear cuenta</button><button class="link-btn" id="show-login">Volver al inicio de sesión</button>
       </div>

@@ -3,7 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const { DatabaseSync } = require('node:sqlite');
 
-const dbFile = path.resolve(process.env.SQLITE_FILE || path.join(__dirname, '../../database/atlantic_crm.db'));
+const configuredFile = process.env.SQLITE_FILE || './database/atlantic_crm.db';
+const projectRoot = path.resolve(__dirname, '../..');
+const dbFile = path.isAbsolute(configuredFile) ? configuredFile : path.resolve(projectRoot, configuredFile);
 let database;
 function getDatabase() {
   if (database) return database;
@@ -93,6 +95,6 @@ const sql = {
 };
 async function getPool(){getDatabase();return new Pool();}
 async function query(text,inputs={}){return execute(text,inputs);}
-async function health(){try{execute('SELECT 1 AS connected');return {ok:true,database:'connected',engine:'SQLite',file:dbFile};}catch(e){return {ok:false,database:'disconnected',code:e.code||'SQLITE_ERROR',message:e.message};}}
+async function health(){try{execute('SELECT 1 AS connected');return {ok:true,database:'connected',engine:'SQLite'};}catch(e){return {ok:false,database:'disconnected',code:e.code||'SQLITE_ERROR',message:e.message};}}
 async function close(){if(database){database.close();database=null;}}
 module.exports={sql,getPool,query,health,close,getDatabase,dbFile};

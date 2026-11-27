@@ -9,7 +9,8 @@
     "dev": "nodemon backend/src/app.js",
     "check": "node --check backend/src/app.js && node --check backend/src/db.js && node --check backend/scripts/seed-demo.js && node --check backend/scripts/test-sqlite.js && node --check backend/scripts/setup.js && node --check frontend/js/app.js",
     "seed:demo": "node backend/scripts/seed-demo.js",
-    "test:sqlite": "node backend/scripts/test-sqlite.js"
+    "test:sqlite": "node backend/scripts/test-sqlite.js",
+    "test": "npm run check && npm run test:sqlite"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
